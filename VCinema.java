@@ -104,20 +104,13 @@ public class VipCinema extends Application {
         return movies.stream().filter(m -> m.id.equals(id)).findFirst().orElse(null);
     }
 
-    // ═══════════════════════════════════════════════════════════════
-    //  SEED DATA  — أفلام أكثر + passwords واضحة للـ staff
-    // ═══════════════════════════════════════════════════════════════
+
 
     private void seedData() {
         // Users — passwords بسيطة وواضحة
         users.add(new User("Admin",   "ameer@mail.com",  "0000",  "admin"));
-        users.add(new User("Omar",    "omar@vcinema.com",   "omar123",   "staff"));   // staff بـ password معروف
-        users.add(new User("Ahmad",   "ahmad@mail.com",     "pass1",     "customer"));
-        users.add(new User("Sara",    "sara@mail.com",      "pass2",     "customer"));
-        users.add(new User("Khalid",  "khalid@mail.com",    "pass3",     "customer"));
-        users.add(new User("Lina",    "lina@mail.com",      "pass4",     "customer"));
-
-        // ── أفلام (24 فيلم) ──────────────────────────────────────
+       
+       
         movies.add(new Movie("m1", "The Dark Knight", "🦇",
             "Batman faces the anarchic Joker who plans to plunge Gotham into chaos.",
             "Action", "Christopher Nolan", "Christian Bale, Heath Ledger", 13, 9.0,
@@ -263,7 +256,6 @@ public class VipCinema extends Application {
             .poster("https://image.tmdb.org/t/p/w500/pB8BM7pdSp6B6Ih7QZ4DrQ3PmJK.jpg"));
     }
 
-    // ═══════════════════════════════════════════════════════════════
     //  COLORS & STYLES
     // ═══════════════════════════════════════════════════════════════
 
@@ -280,7 +272,7 @@ public class VipCinema extends Application {
     static final String C_WHITE   = "#ffffff";
     static final String C_DIM     = "#555555";
 
-    // Field style — text أبيض واضح
+   
     static final String S_FIELD =
         "-fx-background-color:#0d0d0d;" +
         "-fx-text-fill:#ffffff;" +
@@ -597,17 +589,11 @@ public class VipCinema extends Application {
         HBox row = new HBox(6, noAcc, btnGo);
         row.setAlignment(Pos.CENTER);
 
-        // Demo credentials hint — واضحة ومفصلة
-        Label hint = lbl(
-            "Demo accounts:\n" +
-            "admin@vcinema.com / admin123  (Admin)\n" +
-            "omar@vcinema.com / omar123  (Staff)\n" +
-            "ahmad@mail.com / pass1  (Customer)",
-            "-fx-font-size:10px;-fx-text-fill:#555555;");
-        hint.setWrapText(true);
+        
+
 
         c.getChildren().addAll(h, sh, sep(), lEmail, tfEmail, lPass, pfPass,
-            errLbl, btnLogin, sep(), row, hint);
+            errLbl, btnLogin, sep(), row);
 
         StackPane center = new StackPane(c);
         center.setStyle("-fx-background-color:#0a0a0a;");
@@ -639,9 +625,9 @@ public class VipCinema extends Application {
         primaryStage.setScene(new Scene(root, stageW, stageH));
     }
 
-    // ═══════════════════════════════════════════════════════════════
+   
     //  2. SIGN UP
-    // ═══════════════════════════════════════════════════════════════
+   
 
     private void showSignUp() {
         BorderPane root = authRoot();
@@ -739,9 +725,9 @@ public class VipCinema extends Application {
         primaryStage.setScene(new Scene(root, stageW, stageH));
     }
 
-    // ═══════════════════════════════════════════════════════════════
-    //  3. HOME — movies grid
-    // ═══════════════════════════════════════════════════════════════
+   
+    //  3. HOME 
+  
 
     private void showHome() {
         BorderPane root = new BorderPane();
@@ -768,12 +754,12 @@ public class VipCinema extends Application {
         filters.setStyle("-fx-background-color:#111111;" +
             "-fx-border-color:#2a2a2a;-fx-border-width:0 0 1 0;");
 
-        // Search box — text أبيض واضح
+        
         TextField searchBox = new TextField();
         searchBox.setPromptText("🔍  Search movies...");
         searchBox.setStyle(S_FIELD + "-fx-pref-width:220px;");
 
-        // Genre combo — استخدم makeCombo
+        
         List<String> genreList = new ArrayList<>(List.of("All Genres"));
         movies.stream().map(m -> m.genre).distinct().sorted().forEach(genreList::add);
         ComboBox<String> genreCb = makeCombo(FXCollections.observableArrayList(genreList), 150);
@@ -886,7 +872,7 @@ public class VipCinema extends Application {
         return poster;
     }
 
-    // ─── Movie Card ───────────────────────────────────────────────
+    // ─── Movie Card 
 
     private VBox makeMovieCard(Movie m) {
         VBox card = new VBox(8);
@@ -949,7 +935,7 @@ public class VipCinema extends Application {
         return card;
     }
 
-    // ─── Movie Detail Popup ───────────────────────────────────────
+    // ─── Movie Detail Popup
 
     private void showMovieDetail(Movie m) {
         Stage dlg = new Stage();
@@ -1107,9 +1093,8 @@ public class VipCinema extends Application {
         dlg.showAndWait();
     }
 
-    // ═══════════════════════════════════════════════════════════════
     //  4. PAYMENT
-    // ═══════════════════════════════════════════════════════════════
+    
 
     private void showPayment(Movie m, String date, String time, int tickets) {
         Stage dlg = new Stage();
@@ -1320,9 +1305,9 @@ public class VipCinema extends Application {
         dlg.showAndWait();
     }
 
-    // ═══════════════════════════════════════════════════════════════
+  
     //  5. REVIEWS
-    // ═══════════════════════════════════════════════════════════════
+
 
     private void showReviews() {
         BorderPane root = new BorderPane();
@@ -1420,10 +1405,9 @@ public class VipCinema extends Application {
         primaryStage.setScene(new Scene(root, stageW, stageH));
     }
 
-    // ═══════════════════════════════════════════════════════════════
+    
     //  6. ABOUT
-    // ═══════════════════════════════════════════════════════════════
-
+  
     private void showAbout() {
         BorderPane root = new BorderPane();
         root.setStyle("-fx-background-color:#0a0a0a;");
@@ -1480,9 +1464,8 @@ public class VipCinema extends Application {
         return c;
     }
 
-    // ═══════════════════════════════════════════════════════════════
+    
     //  7. SETTINGS
-    // ═══════════════════════════════════════════════════════════════
 
     private void showSettings() {
         BorderPane root = new BorderPane();
@@ -1611,9 +1594,6 @@ public class VipCinema extends Application {
         primaryStage.setScene(new Scene(root, stageW, stageH));
     }
 
-    // ═══════════════════════════════════════════════════════════════
-    //  8. ADMIN PANEL — Staff management بسيط وواضح
-    // ═══════════════════════════════════════════════════════════════
 
     private void showAdmin() {
         BorderPane root = new BorderPane();
