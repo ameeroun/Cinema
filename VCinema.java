@@ -1,4 +1,3 @@
-
 import javafx.application.Application;
 import javafx.animation.*;
 import javafx.beans.property.SimpleStringProperty;
@@ -216,18 +215,6 @@ private boolean isValidEmail(String email) {
                 "18:00", "21:00", "23:30")
                 .poster("https://image.tmdb.org/t/p/w500/fZPSd91yGE9fCcCe6OoQr6E3Bev.jpg"));
 
-        movies.add(new Movie("m11", "Frozen II", "❄",
-                "Elsa travels into the unknown to discover the mysterious origin of her powers.",
-                "Animation", "Chris Buck", "Idina Menzel, Kristen Bell", 9, 6.8,
-                "14:00", "16:30", "19:00")
-                .poster("https://image.tmdb.org/t/p/w500/xTHVFGS0GRFnNs4de0nOwTL3HvL.jpg"));
-
-        movies.add(new Movie("m12", "Thor", "⚡",
-                "The powerful but arrogant god Thor is cast to Earth and must prove himself worthy.",
-                "Action", "Kenneth Branagh", "Chris Hemsworth, Natalie Portman", 12, 7.0,
-                "17:00", "20:00", "22:30")
-                .poster("https://image.tmdb.org/t/p/w500/prSfAi1xGrhLQNxVSUFh61xAqzd.jpg"));
-
         movies.add(new Movie("m13", "The Lion King", "🦁",
                 "Young Simba flees his kingdom after his father's murder, only to return and reclaim his throne.",
                 "Animation", "Jon Favreau", "Donald Glover, Beyonce", 10, 7.1,
@@ -239,12 +226,6 @@ private boolean isValidEmail(String email) {
                 "Action", "Ryan Coogler", "Chadwick Boseman, Michael B. Jordan", 12, 7.3,
                 "15:00", "18:00", "21:00")
                 .poster("https://image.tmdb.org/t/p/w500/uxzzxijgPIY7slzFvMotPv8wjKA.jpg"));
-
-        movies.add(new Movie("m15", "Dune", "🏜",
-                "Paul Atreides leads a rebellion on the desert planet Arrakis to protect its people and resources.",
-                "Sci-Fi", "Denis Villeneuve", "Timothee Chalamet, Zendaya", 14, 8.0,
-                "16:00", "19:30", "22:15")
-                .poster("https://image.tmdb.org/t/p/w500/d5NXSklpcKoA8A9fBMPyIMHxeGe.jpg"));
 
         movies.add(new Movie("m16", "The Matrix", "💊",
                 "A hacker discovers that reality is a simulation and joins a rebellion against the machines.",
@@ -913,13 +894,8 @@ private boolean isValidEmail(String email) {
         StackPane.setAlignment(rBadge, Pos.TOP_RIGHT);
         StackPane.setMargin(rBadge, new Insets(8, 8, 0, 0));
 
-        // price badge bottom right on the poster
-        Label priceBadge = new Label("$" + m.price);
-        priceBadge.setStyle("-fx-background-color:#0a0a0a;-fx-text-fill:#27ae60;-fx-font-size:11px;-fx-padding:3 8;-fx-background-radius:4;-fx-font-weight:bold;");
-        StackPane.setAlignment(priceBadge, Pos.BOTTOM_RIGHT);
-        StackPane.setMargin(priceBadge, new Insets(0, 8, 8, 0));
-
-        poster.getChildren().addAll(badge, rBadge, priceBadge);
+   
+        poster.getChildren().addAll(badge, rBadge);
 
         Label titleLabel = new Label(m.title);
         titleLabel.setStyle("-fx-text-fill:#ffffff;-fx-font-size:13px;-fx-font-weight:bold;");
@@ -963,7 +939,7 @@ private boolean isValidEmail(String email) {
         StackPane header = new StackPane();
         header.setPrefHeight(220);
 
-        StackPane posterHeader = makePoster(m, 520, 220, 80);
+        StackPane posterHeader = makePoster(m, 520, 250, 150);
 
         Region overlay = new Region();
         overlay.setStyle("-fx-background-color:linear-gradient(to bottom, rgba(0,0,0,0.15), rgba(0,0,0,0.55));-fx-background-radius:16 16 0 0;");
@@ -2118,7 +2094,7 @@ private boolean isValidEmail(String email) {
         sc.setFill(Color.TRANSPARENT);
         dlg.setScene(sc);
         dlg.showAndWait();
-    }
+    }   
 
     public static void main(String[] args) {
         launch(args);
