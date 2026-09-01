@@ -17,6 +17,6 @@ The system allows managing movies, halls, schedules.
 ## 🚀 How to Run the Project
 
 1. Install **NetBeans** and **JDK**.
-3. Start **Apache** ز
+3. Start **Apache**
 
 
